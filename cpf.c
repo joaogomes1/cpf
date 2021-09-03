@@ -4,6 +4,8 @@
 
 int main() {
 
+    int p;
+
     int cpf;
     int cpfC;
     int cpfA[12];
@@ -16,8 +18,31 @@ int main() {
 
     setlocale(LC_ALL, "");
 
-    printf("Informe os 9 primeiros dígitos do cpf: ");
-    scanf("%d", &cpf);
+    p = 0;
+    while ( p == 0 ) {
+
+        printf("Informe os 9 primeiros dígitos do cpf: ");
+        scanf("%d", &cpf);
+
+        cpfC = cpf;
+        i = 0;
+        while( cpfC >= 1 ) {
+
+            cpfC /= 10;
+            i++;
+        }
+
+        if ( i != 9 ) {
+
+            printf("É necessário informar um número com nove dígitos\n");
+            printf("\n");
+        }
+        else {
+
+            p = 1;
+        }
+
+    }
 
     i = 8;
     cpfC = cpf;
@@ -41,8 +66,6 @@ int main() {
             soma += cpfA[i] * k;
             k--;
             i++;
-
-            printf("%d\n", soma);
         }
 
         resto = soma % 11;
@@ -58,9 +81,9 @@ int main() {
         j++;
     }
 
-    printf("Os dígitos verificadores do cpf '%d' são '%d' e '%d'\n", cpf, cpfA[9], cpfA[10]);
-
     printf("\n");
+
+    printf("Os dígitos verificadores do cpf '%d' são '%d' e '%d'\n", cpf, cpfA[9], cpfA[10]);
 
     return 0;
 }
